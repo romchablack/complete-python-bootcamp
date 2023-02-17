@@ -1,0 +1,4 @@
+*.ipynb
+.bashrc
+__pycache__/
+temp/
