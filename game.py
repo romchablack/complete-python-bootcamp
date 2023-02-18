@@ -127,13 +127,15 @@ def check_winner(board):
 
 while game_on:
     # newboard
-    board = board_clear.copy()
+    board = [[" ", " ", " "], [" ", " ", " "], [" ", " ", " "]]
+    print_current_board(board)
     # define full set of available moves
     moves = available_moves.copy()
+    print(moves)
     # define first Player
     player = new_game()
-    
-    winner == 0
+
+    winner = 0
     while winner == 0:
         # select move
         position = select_position(moves)
@@ -150,6 +152,7 @@ while game_on:
                 )
             if replay in ["y", "Y", "yes", "Yes", "YES"]:
                 print("NEW GAME!!!")
+                break
             else:
-                print("Thank you for the game. Bye!")
                 game_on = False
+                print("Thank you for the game. Bye!")
