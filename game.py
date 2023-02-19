@@ -1,22 +1,14 @@
-board_default = [[7, 8, 9], [4, 5, 6], [1, 2, 3]]
+from IPython.display import clear_output
 
-board_clear = [[" ", " ", " "], [" ", " ", " "], [" ", " ", " "]]
+board_default = [[7, 8, 9], [4, 5, 6], [1, 2, 3]]
 
 available_moves = list(range(1, 10))
 
 game_on = True
 
 
-# PRINT CLEAR BOARD AS EXAMPLE
-def print_default_board(board):
-    print("The default board is: ")
-    for i in board:
-        print(i)
-    print("\n")
-
-
 # PRINT CURRENT BOARD
-def print_current_board(board):
+def print_board(board):
     print("The current board is: ")
     for i in board:
         print(i)
@@ -58,8 +50,8 @@ def who_is_next(player):
 def select_position(moves):
     is_digit = False
     is_in_range = False
-    while is_digit == False or is_in_range == False:
-        # print_current_board()
+    while is_digit != True or is_in_range != True:
+        # print_board()runtime
         choice = input(f"Enter value from available range {moves}: ")
         # print(choice)
         if choice.isdigit():
@@ -128,7 +120,7 @@ def check_winner(board):
 while game_on:
     # newboard
     board = [[" ", " ", " "], [" ", " ", " "], [" ", " ", " "]]
-    print_current_board(board)
+    print_board(board)
     # define full set of available moves
     moves = available_moves.copy()
     print(moves)
@@ -137,11 +129,12 @@ while game_on:
 
     winner = 0
     while winner == 0:
+        clear_output()
         # select move
         position = select_position(moves)
         # add move to the board
         add_selected_option(player, position, board, board_default)
-        print_current_board(board)
+        print_board(board)
         winner = check_winner(board)
         if winner == 0:
             player = who_is_next(player)
